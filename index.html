@@ -6,28 +6,16 @@
 <title>Карта ОР ЦМПОН</title>
 <style>
 :root {
-  --bg:#f4f7fc;
-  --panel:#ffffff;
-  --text:#1d2c48;
-  --muted:#62738e;
-  --line:#d9e3f1;
-  --blue:#305fe8;
-  --green:#11866f;
-  --amber:#ca7f00;
-  --gold:#f0c44f;
-  --gold-bg:#fff8df;
+  --bg:#f4f7fc; --panel:#ffffff; --text:#1d2c48; --muted:#62738e; --line:#d9e3f1;
+  --blue:#305fe8; --green:#11866f; --amber:#ca7f00; --active:#fff9db;
   --shadow:0 12px 30px rgba(21,40,82,.08);
-  --active:#fff9db;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:linear-gradient(180deg,#eef3ff 0%, #f8fbff 35%, #f4f7fc 100%);color:var(--text);
 font-family:"Segoe UI Variable","Segoe UI",Tahoma,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
 body{min-width:1460px}
 .page{padding:18px}
-.hero{
-  background:linear-gradient(135deg,#1f48bc 0%, #315fe7 45%, #6b8fff 100%);
-  color:#fff;border-radius:28px;padding:18px 22px;box-shadow:var(--shadow);margin-bottom:14px;position:relative;overflow:hidden
-}
+.hero{background:linear-gradient(135deg,#1f48bc 0%, #315fe7 45%, #6b8fff 100%);color:#fff;border-radius:28px;padding:18px 22px;box-shadow:var(--shadow);margin-bottom:14px;position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;right:-50px;top:-50px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.08)}
 .hero:after{content:"";position:absolute;right:110px;bottom:-60px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.07)}
 .hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;position:relative;z-index:1}
@@ -53,25 +41,14 @@ body{min-width:1460px}
 .arrow-row{display:flex;align-items:stretch;gap:18px;overflow:visible;flex-wrap:nowrap;margin-top:12px}
 .cluster{display:flex;align-items:stretch;gap:18px;overflow:visible;flex-wrap:nowrap}
 .card-wrap{position:relative;display:flex;align-items:center;flex:1 1 0;min-width:0}
-.card-wrap.fixed{flex:0 0 204px}
 .card-wrap.mid{flex:0 0 214px}
 .card-wrap.last{flex:0 0 214px}
-.big-arrow{
-  position:absolute;right:-18px;top:42%;transform:translateY(-50%);
-  font-size:34px;color:#7f9dff;font-weight:900;line-height:1;pointer-events:none;
-  animation:arrowNudge 1.8s ease-in-out infinite
-}
+.big-arrow{position:absolute;right:-18px;top:42%;transform:translateY(-50%);font-size:34px;color:#7f9dff;font-weight:900;line-height:1;pointer-events:none;animation:arrowNudge 1.8s ease-in-out infinite}
 .big-arrow.green{color:#47a88f}
 .big-arrow.amber{color:#d7a24b}
-@keyframes arrowNudge {
-  0%,100% {transform:translateY(-50%) translateX(0); opacity:.72}
-  50% {transform:translateY(-50%) translateX(4px); opacity:1}
-}
-.card{
-  width:100%; min-height:132px; background:#fff; border:1px solid #d8e2ef; border-radius:20px; padding:12px 14px 11px;
-  box-shadow:0 5px 15px rgba(18,34,69,.06); cursor:pointer; transition:.16s;
-  display:flex; flex-direction:column; justify-content:space-between; word-break:normal; overflow-wrap:normal;
-}
+@keyframes arrowNudge {0%,100% {transform:translateY(-50%) translateX(0); opacity:.72}50% {transform:translateY(-50%) translateX(4px); opacity:1}}
+.card{width:100%; min-height:132px; background:#fff; border:1px solid #d8e2ef; border-radius:20px; padding:12px 14px 11px;
+  box-shadow:0 5px 15px rgba(18,34,69,.06); cursor:pointer; transition:.16s; display:flex; flex-direction:column; justify-content:space-between;}
 .card:hover{transform:translateY(-2px); box-shadow:0 12px 25px rgba(18,34,69,.10)}
 .card.active{outline:3px solid rgba(48,95,232,.18); background:var(--active)}
 .card.final{background:linear-gradient(180deg,#fffef6,#fff8de)}
@@ -97,11 +74,25 @@ body{min-width:1460px}
 .box h4{margin:0 0 6px;font-size:12px;color:#596c84}
 .box p{margin:0;font-size:12px;line-height:1.42;white-space:pre-wrap}
 .footer-note{margin-top:10px;font-size:11px;color:var(--muted)}
+.modal-backdrop{position:fixed;inset:0;background:rgba(17,28,51,.52);display:none;align-items:center;justify-content:center;padding:24px;z-index:999}
+.modal-backdrop.show{display:flex}
+.modal{width:min(1100px,96vw);max-height:90vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.28);border:1px solid #d8e2ef}
+.modal-header{padding:18px 20px 12px;border-bottom:1px solid #e7edf5;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.modal-title-wrap h3{margin:6px 0 0;font-size:24px;line-height:1.18;color:#1d2c48}
+.modal-title-wrap .subid{display:inline-block;padding:5px 10px;border-radius:999px;background:#edf2ff;color:#305fe8;font-weight:800;font-size:12px}
+.modal-close{border:0;background:#f3f6fb;color:#4e627f;font-size:22px;line-height:1;border-radius:12px;padding:8px 12px;cursor:pointer}
+.modal-body{padding:18px 20px 20px}
+.modal-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.modal-badges span{padding:6px 10px;border-radius:999px;background:#f5f8fc;border:1px solid #e3eaf4;font-size:12px;color:#4f627d;font-weight:700}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mbox{border:1px solid #e0e8f2;border-radius:18px;padding:14px;background:#fff}
+.mbox.full{grid-column:1 / -1}
+.mbox h4{margin:0 0 8px;font-size:13px;color:#53667f}
+.mbox p{margin:0;font-size:13px;line-height:1.45;white-space:pre-wrap}
 </style>
 </head>
 <body>
 <div class="page">
-
 <section class="hero">
   <div class="hero-top">
     <div class="brand">
@@ -115,12 +106,12 @@ body{min-width:1460px}
       </div>
       <div>
         <h1>Карта ОР ЦМПОН</h1>
-        <p>Интерактивная карта образов результатов направления «Цифровая модель переписей и обследований населения». На схеме показаны связанные с ЦМПОН подОР; ниже отображаются составляющие модели, которые создаются, развиваются или переиспользуются по мере их достижения.</p>
+        <p>Интерактивная карта образов результатов направления «Цифровая модель переписей и обследований населения». Все связанные с ЦМПОН подОР показаны на одной схеме; по клику открываются подробные таблички и подсвечиваются составляющие модели.</p>
       </div>
     </div>
     <div class="hero-box">
-      <b>Как читать схему</b>
-      <span>На карте показаны только ОР, относящиеся к ЦМПОН: основной контур переписей и обследований населения, а также связанные направления ЛПХ и ВСХП. Это не полный перечень ОР ГИС ЦАП.</span>
+      <b>Что показано на карте</b>
+      <span>На карте отражены только ОР, относящиеся к ЦМПОН: основной контур переписей и обследований населения, а также связанные направления ЛПХ и ВСХП. Это не полный перечень ОР ГИС ЦАП.</span>
     </div>
   </div>
   <div class="kpis">
@@ -133,16 +124,13 @@ body{min-width:1460px}
 
 <section class="panel">
   <h2 class="section-title"><span class="marker">Карта ОР ЦМПОН</span>Связанные с ЦМПОН образы результатов</h2>
-  <div class="muted">Щёлкните по любой карточке — ниже подсветятся соответствующие составляющие ЦМПОН, а внизу откроется краткая карточка результата. На этой странице показаны только ОР направления ЦМПОН.</div>
+  <div class="muted">Щёлкните по любой карточке — подсветятся соответствующие составляющие ЦМПОН, снизу заполнится краткая панель и откроется всплывающая табличка с деталями.</div>
 
   <div class="zone blue">
     <div class="section-title"><span class="marker">ОР 12</span>Цифровая модель переписей и обследований населения</div>
     <div class="muted">Основная ветка: от базового контура ЦМПОН и СДР до проведения ВПН-2030. Отдельная параллельная ветка — ЕДН/миграция и демографические расчёты.</div>
-
     <div id="or12top" class="arrow-row"></div>
-
     <div class="branch-label">Параллельная ветка от 12.1 → ЕДН и миграция → демографические расчёты</div>
-
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:22px;margin-top:12px">
       <div>
         <div class="muted" style="font-weight:700;margin-bottom:8px">Продолжение основной ветки</div>
@@ -153,7 +141,6 @@ body{min-width:1460px}
         <div id="or12side" class="cluster"></div>
       </div>
     </div>
-
     <div class="footer-note"><b>Основная цепочка:</b> 12.1 → 12.2 → 12.3 → 12.4 → 12.5 → 12.6 → 12.7 → 12.10 → 12.11. <b>Параллельная ветка:</b> 12.1 → 12.8 → 12.9.</div>
   </div>
 
@@ -163,7 +150,6 @@ body{min-width:1460px}
       <div class="muted">Используются общие компоненты ЦМПОН и ГИС ЦАП в применимой части.</div>
       <div id="or13" class="cluster" style="margin-top:12px"></div>
     </div>
-
     <div class="zone">
       <div class="section-title"><span class="marker">ОР 14</span>ВСХП-2030</div>
       <div class="muted">Переиспользуются формы, списки, контуры сбора и механизмы автоматизации.</div>
@@ -173,8 +159,7 @@ body{min-width:1460px}
 
   <div class="schema-zone">
     <h2 class="section-title"><span class="marker">Схема ЦМПОН</span>Какие составляющие появляются по мере движения по ОР</h2>
-    <div class="muted">Подсветка работает по клику на карточки выше.</div>
-
+    <div class="muted">Подсветка работает по клику на карточки выше. Дополнительно остаётся и нижняя краткая панель, и всплывающая подробная табличка.</div>
     <div id="selected" class="selected">Выбранный подОР: —</div>
     <div id="schema" class="schema-grid"></div>
 
@@ -202,7 +187,43 @@ body{min-width:1460px}
     </div>
   </div>
 </section>
+</div>
 
+<div id="modalBackdrop" class="modal-backdrop" onclick="backdropClose(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <div id="m-id" class="subid">—</div>
+        <h3 id="m-title">—</h3>
+      </div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-badges" id="m-badges"></div>
+      <div class="modal-grid">
+        <div class="mbox full">
+          <h4>Полная формулировка</h4>
+          <p id="m-desc">—</p>
+        </div>
+        <div class="mbox">
+          <h4>Что используется</h4>
+          <p id="m-uses">—</p>
+        </div>
+        <div class="mbox">
+          <h4>Что создаётся / получается</h4>
+          <p id="m-creates">—</p>
+        </div>
+        <div class="mbox">
+          <h4>Зависимость / вход</h4>
+          <p id="m-depends">—</p>
+        </div>
+        <div class="mbox">
+          <h4>Примечание</h4>
+          <p id="m-note">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -212,7 +233,6 @@ const GROUPS = [{"id": "foundation", "title": "Основа ЦМПОН", "subtit
 function getItem(id) {
   return DATA.find(x => x.id === id);
 }
-
 function makeCardWrap(item, arrowColor="", showArrow=true, extraClass="") {
   const wrap = document.createElement("div");
   const rowClass = item.or === "12" ? "or12" : (item.or === "13" ? "or13" : "or14");
@@ -230,7 +250,6 @@ function makeCardWrap(item, arrowColor="", showArrow=true, extraClass="") {
   wrap.querySelector(".card").addEventListener("click", () => selectItem(item.id));
   return wrap;
 }
-
 function fillLinear(targetId, ids, arrowColor="") {
   const root = document.getElementById(targetId);
   root.innerHTML = "";
@@ -241,7 +260,6 @@ function fillLinear(targetId, ids, arrowColor="") {
     root.appendChild(makeCardWrap(item, arrowColor, !isLast, isLast ? "last" : ""));
   });
 }
-
 function renderSchema() {
   const root = document.getElementById("schema");
   root.innerHTML = "";
@@ -257,34 +275,53 @@ function renderSchema() {
     root.appendChild(el);
   });
 }
-
 function clearState() {
   document.querySelectorAll(".card").forEach(el => el.classList.remove("active"));
   document.querySelectorAll(".comp").forEach(el => el.classList.remove("active"));
 }
-
+function openModal(item) {
+  document.getElementById("m-id").textContent = item.id;
+  document.getElementById("m-title").textContent = item.title;
+  document.getElementById("m-badges").innerHTML = `
+    <span>Срок: ${item.deadline || "—"}</span>
+    <span>ФЗ: ${item.owner || "—"}</span>
+    <span>Куратор: ${item.curator || "—"}</span>
+    <span>Сквозной id: ${item.cross_id || "—"}</span>
+  `;
+  document.getElementById("m-desc").textContent = item.description || "—";
+  document.getElementById("m-uses").textContent = item.uses || "—";
+  document.getElementById("m-creates").textContent = item.creates || "—";
+  document.getElementById("m-depends").textContent = item.depends || "—";
+  document.getElementById("m-note").textContent = item.note || "—";
+  document.getElementById("modalBackdrop").classList.add("show");
+}
+function closeModal() {
+  document.getElementById("modalBackdrop").classList.remove("show");
+}
+function backdropClose(event) {
+  if (event.target.id === "modalBackdrop") closeModal();
+}
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") closeModal();
+});
 function selectItem(id) {
   clearState();
   const item = getItem(id);
   if (!item) return;
-
   const card = document.querySelector(`.card[data-id="${id}"]`);
   if (card) card.classList.add("active");
-
   (item.components || []).forEach(cid => {
     const comp = document.getElementById("comp-" + cid);
     if (comp) comp.classList.add("active");
   });
-
   document.getElementById("selected").textContent = "Выбранный подОР: " + item.id + " — " + item.short;
-  document.getElementById("d-summary").textContent =
-    item.title + "\nСрок: " + item.deadline + "\nФункциональный заказчик: " + item.owner + "\nКуратор: " + item.curator;
+  document.getElementById("d-summary").textContent = item.title + "\nСрок: " + item.deadline + "\nФункциональный заказчик: " + item.owner + "\nКуратор: " + item.curator;
   document.getElementById("d-uses").textContent = item.uses || "—";
   document.getElementById("d-creates").textContent = item.creates || "—";
   document.getElementById("d-depends").textContent = item.depends || "—";
   document.getElementById("d-note").textContent = item.note || "—";
+  openModal(item);
 }
-
 fillLinear("or12top", ["12.1","12.2","12.3","12.4","12.5","12.6"], "");
 fillLinear("or12main2", ["12.7","12.10","12.11"], "");
 fillLinear("or12side", ["12.8","12.9"], "");
